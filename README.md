@@ -1,1 +1,2 @@
-BW-Raft implementation code.
+RAFT-test code.
+Details are in docs.
