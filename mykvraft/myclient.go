@@ -145,11 +145,31 @@ func Readrequest(num int, servers []string) {
 	for i := 0; i < len(servers); i++ {
 		ck.servers[i] = servers[i] + "1"
 	}
-
+	start := time.Now()
 	for i := 0; i < num; i++ {
 		ck.Get("key")
 		atomic.AddInt32(&count, 1)
 	}
+	end := time.Since(start)
+	fmt.Printf("读取耗时:%s\n",end)
+}
+
+func WriteRequest(num int,servers []string)
+{
+	ck := Clerk{}
+	ck.servers = make([]string, len(servers))
+
+	for i := 0; i < len(servers); i++ {
+		ck.servers[i] = servers[i] + "1"
+	}
+
+	start := time.Now()
+
+	for i := 0; i < num; i++ {
+		ck.Put("key", "value")
+	}
+	end := time.Since(start)
+	fmt.Printf("写入耗时:%s\n",end)
 }
 
 func main() {
